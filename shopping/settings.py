@@ -56,14 +56,14 @@ TEMPLATES = [
 WSGI_APPLICATION = 'shopping.wsgi.application'
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'armshopper_ex',
-#         'USER':'postgres',
-#         'PASSWORD':'727447Sa.',
-#         'HOST':'localhost',
-#         'PORT':'5432',
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'armzona',
+        'USER':'postgres',
+        'PASSWORD':'727447Sa.',
+        'HOST':'localhost',
+        'PORT':'5432',
 
     }
 }
