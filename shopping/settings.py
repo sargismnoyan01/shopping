@@ -2,14 +2,14 @@ from pathlib import Path
 import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+TEMPLATES_DIR=os.path.join(BASE_DIR,'templates')
 
 
 SECRET_KEY = 'django-insecure-9b0c&930s17jh+@5fdg9-$%=&zwv0qz%-0pkn!#qtt_2fhkn_x'
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','13.60.23.131','']
 
 
 
@@ -58,18 +58,12 @@ WSGI_APPLICATION = 'shopping.wsgi.application'
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'armshopper_ex',
-        'USER':'postgres',
-        'PASSWORD':'727447Sa.',
-        'HOST':'localhost',
-        'PORT':'5432',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'armshopper_ex',
+#         'USER':'postgres',
+#         'PASSWORD':'727447Sa.',
+#         'HOST':'localhost',
+#         'PORT':'5432',
 
     }
 }
