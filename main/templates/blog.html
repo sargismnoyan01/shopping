@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+	{% block content %}
+	<section>
+		<div class="container">
+			<div class="row">
+				
+				<div class="col-sm-9">
+					<div class="blog-post-area">
+						<h2 class="title text-center">Մեր մասին</h2>
+						<div class="single-blog-post">
+							<h3>Գաղտնիության քաղաքականություն</h3>
+							<p>{{ aboutshop.secure }}</p>
+						</div>
+					</div>
+					<br>
+					<div class="blog-post-area">
+						<div class="single-blog-post">
+							<h3>փոխհատուցման քաղաքականություն</h3>
+							<p>{{ aboutshop.offset }}</p>
+						</div>
+					</div>
+					<br>
+					<div class="blog-post-area">
+						<div class="single-blog-post">
+							<h3>Վճարման համակարգ</h3>
+							<p>{{ aboutshop.pay }}</p>
+						</div>
+					</div>
+					<br>
+					<div class="blog-post-area">
+						<div class="single-blog-post">
+							<h3>Ընկերության տվյալներ</h3>
+							<p>{{ aboutshop.infos }}</p>
+						</div>
+					</div>
+					<br>
+					<div class="blog-post-area">
+						<div class="single-blog-post">
+							<h3>Գտնվելու վայրը</h3>
+							<p>{{ aboutshop.place }}</p>
+						</div>
+					</div>
+					<br>
+					<div class="blog-post-area">
+						<div class="single-blog-post">
+							<h3>Ինչպես միանալ</h3>
+							<p>{{ aboutshop.connect | safe }}</p>
+						</div>
+					</div>
+					<br>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	{% endblock %}

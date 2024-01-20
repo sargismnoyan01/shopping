@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+  {% block content %}
+  {% load static %}
+
+  
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="left-sidebar">
+						</div><!--/category-products-->
+
+          </div>
+        </div>
+        <br>
+        <div class="col-sm-9 padding-right">
+          <div class="product-details"><!--product-details-->
+            <div class="col-sm-5">
+              <div id="slideshow">
+                <div class="slide">
+                  <img src="{{ subcategory.img.url }}" alt="" width="350" height="450" onclick="nextSlide()">
+                </div>
+                <div class="slide">
+                  <img src="{{ subcategory.img1.url }}" alt="" width="350" height="450" onclick="nextSlide()">
+                </div>
+                <div class="slide">
+                  <img src="{{ subcategory.img2.url }}" alt="" width="350" height="450" onclick="nextSlide()">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-7">
+              <div class="product-information"><!--/product-information-->
+                <div class="rating">
+                  <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp; -->
+                  {% if prod == 5 %}
+                  <input value="5" name="rate1" id="star5_1" type="radio" disabled checked>
+                  <label title="text" for="star5_1"></label>
+                  <input value="4" name="rate1" id="star4_1" type="radio" disabled>
+                  <label title="text" for="star4_1"></label>
+                  <input value="3" name="rate1" id="star3_1" type="radio" disabled>
+                  <label title="text" for="star3_1"></label>
+                  <input value="2" name="rate1" id="star2_1" type="radio" disabled>
+                  <label title="text" for="star2_1"></label>
+                  <input value="1" name="rate1" id="star1_1" type="radio" disabled>
+                  <label title="text" for="star1_1"></label>
+                  {% elif prod == 4 %}
+                  <input value="5" name="rate1" id="star5_1" type="radio" disabled >
+                  <label title="text" for="star5_1"></label>
+                  <input value="4" name="rate1" id="star4_1" type="radio" disabled checked>
+                  <label title="text" for="star4_1"></label>
+                  <input value="3" name="rate1" id="star3_1" type="radio" disabled>
+                  <label title="text" for="star3_1"></label>
+                  <input value="2" name="rate1" id="star2_1" type="radio" disabled>
+                  <label title="text" for="star2_1"></label>
+                  <input value="1" name="rate1" id="star1_1" type="radio" disabled>
+                  <label title="text" for="star1_1"></label>
+                  {% elif prod == 3 %}
+                  <input value="5" name="rate1" id="star5_1" type="radio" disabled >
+                  <label title="text" for="star5_1"></label>
+                  <input value="4" name="rate1" id="star4_1" type="radio" disabled >
+                  <label title="text" for="star4_1"></label>
+                  <input value="3" name="rate1" id="star3_1" type="radio" disabled checked>
+                  <label title="text" for="star3_1"></label>
+                  <input value="2" name="rate1" id="star2_1" type="radio" disabled>
+                  <label title="text" for="star2_1"></label>
+                  <input value="1" name="rate1" id="star1_1" type="radio" disabled>
+                  <label title="text" for="star1_1"></label>
+                  {% elif prod == 2 %}
+                  <input value="5" name="rate1" id="star5_1" type="radio" disabled >
+                  <label title="text" for="star5_1"></label>
+                  <input value="4" name="rate1" id="star4_1" type="radio" disabled >
+                  <label title="text" for="star4_1"></label>
+                  <input value="3" name="rate1" id="star3_1" type="radio" disabled >
+                  <label title="text" for="star3_1"></label>
+                  <input value="2" name="rate1" id="star2_1" type="radio" disabled checked>
+                  <label title="text" for="star2_1"></label>
+                  <input value="1" name="rate1" id="star1_1" type="radio" disabled>
+                  <label title="text" for="star1_1"></label>
+                  {% elif prod == 1 %}
+                  <input value="5" name="rate1" id="star5_1" type="radio" disabled >
+                  <label title="text" for="star5_1"></label>
+                  <input value="4" name="rate1" id="star4_1" type="radio" disabled >
+                  <label title="text" for="star4_1"></label>
+                  <input value="3" name="rate1" id="star3_1" type="radio" disabled >
+                  <label title="text" for="star3_1"></label>
+                  <input value="2" name="rate1" id="star2_1" type="radio" disabled >
+                  <label title="text" for="star2_1"></label>
+                  <input value="1" name="rate1" id="star1_1" type="radio" disabled checked>
+                  <label title="text" for="star1_1"></label>
+                  {% else %}
+                  {% endif %}
+                </div>
+                <br><br>
+                <h2>{{ subcategory.name }}</h2>
+                <p>Web ID: {{ subcategory.id }}</p>
+                <br><br>
+                <!-- <img src="images/product-details/rating.png" alt="" /> -->
+                <span>
+                  <span>AMD {{ subcategory.price_now }}</span>
+                  {% if subcategory.price_now != subcategory.price_old %}
+                  <span class="discounted">{{ subcategory.price_old }}</span>
+                  {% endif %}
+                  {% if in_detail_user == True  %}
+                  <a class="btn btn-fefault cart" href="{% url 'change_products' subcategory.id %}">Փոփոխել</a>   
+                </button> 
+                {% endif %}
+                {% if user.is_authenticated %}
+                {% if subcategory.dissave %}
+                <a class="btn btn-fefault cart" href="{% url 'saves' subcategory.id %}">Պահպանել</a>
+                {% else %}
+                <a class="btn btn-fefault cart" href="{% url 'saves' subcategory.id %}">Ջնջել</a>
+                {% endif %}
+                {% endif %}
+              </button> 
+            </span>
+            <p>{{ subcategory.info | safe}}</p>
+            <p>վաճառակետ - {{subcategory.user}}</p>
+            <p>Ապրանքատեսակ - {{subcategory.cate}} </p>
+            <p>Տեղադրման ամսաթիվ - {{subcategory.dt}}</p>
+            <p style="color: blue;">Առաքումը Հայաստանում անվճար է</p>
+                <!-- <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt="" /></a> -->
+                <div class="product-order">
+                  <form action="" method="post">
+                    {% csrf_token %}
+                    {% for i in messages %}
+                      <p style="color: rgb(32, 216, 57);">{{ i }}</p>
+                    {% endfor %}
+                    {% if user.is_authenticated %}
+                    <input type="text" name="name" placeholder="Անուն Ազգանուն" id="" width="100px">
+                    <input type="tel" name="phone" placeholder="հեռախոսահամար " id="">
+                    <p>օրինակ +37400000000</p>
+                    <button class="order-btn" type="submit">Պատվիրել</button>
+                    <!-- <h6 style="color: green;">Մենք շուտով կապ կհաստատենք</h6> -->
+                    {% else %}
+                    <a href="{% url 'login' %}" class="order-btn">Պատվիրել</a>
+                    {% endif %}
+                  </form>
+                </div>
+
+              </div><!--/product-information-->
+            </div>
+          </div><!--/product-details-->
+
+          <br><br><hr><br><br>
+          <div class="category-tab shop-details-tab"><!--category-tab-->
+            <div class="col-sm-12">
+              <div class="tab-pane fade active in" id="reviews">
+                <div class="col-sm-12">
+                  {% if user.is_authenticated %}
+                  <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p><b>Թողեք ձեր մեկնաբանությունը </b></p>
+                    <span>
+                      <input name="name" type="text" placeholder="Անուն" />
+                      <input name="surname" type="text" placeholder="Ազգանուն" />
+                    </span> 
+                    <textarea name="comment" placeholder="Մեկնաբանություն"></textarea>
+                    <div class="rating">
+                      <input value="5" name="rate" id="star5_2" type="radio">
+                      <label title="text" for="star5_2"></label>
+                      <input value="4" name="rate" id="star4_2" type="radio" checked="">
+                      <label title="text" for="star4_2"></label>
+                      <input value="3" name="rate" id="star3_2" type="radio">
+                      <label title="text" for="star3_2"></label>
+                      <input value="2" name="rate" id="star2_2" type="radio">
+                      <label title="text" for="star2_2"></label>
+                      <input value="1" name="rate" id="star1_2" type="radio">
+                      <label title="text" for="star1_2"></label>
+                    </div>
+                    <br>
+                    <br>
+                     {{ form.img }}
+                     <br>
+                     <br>
+                    <button type="submit" class="btn btn-default pull-right">
+                      Submit
+                    </button>
+                  </form>
+                  {% else %}
+                  <a href="{% url 'login' %}">Գրանցվեք մեկնաբանելու համար</a>
+                  {% endif %} 
+                  <hr> <br><br>
+                  {% for i in comments %}
+                  <ul>
+                    <li><a href=""><i class="fa fa-user">{{ i.name }} {{ i.surname }}</i></a></li>
+                    <li><a href=""><i class="fa fa-calendar-o"></i>{{ i.datenow }}</a></li>
+                  </ul>
+
+                  <div class="order-review">
+                    <img src="{{ i.img.url }}" alt="prodcut">
+                    <p>{{ i.comment }}</p>
+                  </div>
+                  <hr>
+                  {% endfor %}
+                  <div class="features_items"><!--features_items-->
+                    <h2 class="title text-center">Նմանատիպ</h2>
+                    {% for i in allproduct %}
+                      {% if i.id != subcategory.id  %}
+                    <div class="col-sm-4">
+                      <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                              <img src="{{ i.img.url }}" alt="" height="200"  width="200"/>
+        
+                              <h2>{{ i.price_now }} դրամ</h2>
+                              <p>{{ i.name }}</p>
+                              <a href="{% url 'detail' i.id %}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>Տեսնել ավելին</a>
+                            </div>
+                            {% if i.price_now != i.price_old %}
+                            <img src="{% static 'images/6188700.png' %}"  class="pricing" alt="" width="50"  height="50" />
+                            {% endif %}
+                        </div>
+                        <div class="choose">
+                          <ul class="nav nav-pills nav-justified">
+                            <li><a href="{% url 'users' i.user.id %}"><i></i>{{ i.user }}</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+
+                  </div><!--features_items-->                
+                    {% include 'panel.html' %}
+                  </div>
+              </div>
+
+            </div>
+          </div><!--/category-tab-->
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Add this at the end of your body section -->
+  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+  
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.display = i === index ? 'block' : 'none';
+      });
+    }
+  
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+  
+    function startSlideshow() {
+      setInterval(nextSlide, 7000);
+    }
+  
+    // Show the first slide immediately
+    showSlide(currentSlide);
+  
+    // Start the slideshow
+    startSlideshow();
+  </script>
+  
+  <!-- Manual navigation controls -->
+
+  </html>
+  
+
+ {% endblock %}

@@ -1,0 +1,60 @@
+{% load static %}
+<div class="category-tab"><!--category-tab-->
+    <div class="col-sm-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#{{ caregoryf.id }}" data-toggle="tab">{{ caregoryf.name }}</a></li>
+            {% for i in categorp %}
+                {% if i.name != caregoryf.name %}
+            <li><a href="#{{ i.id }}" data-toggle="tab">{{ i.name }}</a></li>
+                {% endif %}
+            {% endfor %}
+            <!-- <li><a href="#sunglass" data-toggle="tab">Sunglass</a></li>
+            <li><a href="#kids" data-toggle="tab">Kids</a></li>
+            <li><a href="#poloshirt" data-toggle="tab">Polo shirt</a></li> -->
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="{{ categoryf.id }}" >
+            {% for j in caregoryf.productr.all %}
+            <div class="col-sm-3">
+                <div class="product-image-wrapper">
+                    <div class="single-products">
+                        <div class="productinfo text-center">
+                            <img src="{{ j.img.url }}" alt="" width="250" height="200" />
+                            <h2>{{ j.price_now }} դրամ</h2>
+                            <p>{{ j.name }}</p>
+                            <a href="{% url 'detail' j.id %}" class="btn btn-default add-to-cart"><i class="fa fa-eye"></i>Տեսնել ավելին</a>
+                        </div>
+                        {% if j.price_now != j.price_old %}
+                        <img src="{% static 'images/6188700.png' %}"  class="pricing" alt="" width="40"  height="40" />
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+        {% for i in categorp %}
+        {% if i.name != categoryf.name %}
+        <div class="tab-pane fade" id="{{ i.id }}" >
+            {% for j in i.productr.all %}
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="{{ j.img.url }}" alt="" width="250" height="200" />
+                                    <h2>{{ j.price_now }} դրամ</h2>
+                                    <p>{{ j.name }}</p>
+                                    <a href="{% url 'detail' j.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Տեսնել</a>
+                                </div>
+                                {% if j.price_now != j.price_old %}
+                                <img src="{% static 'images/6188700.png' %}"  class="pricing" alt="" width="40"  height="40" />
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>

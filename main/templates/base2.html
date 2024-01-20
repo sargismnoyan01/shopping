@@ -1,0 +1,189 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{{ basicinfo.user }}</title>
+    <link rel="icon" href="{% static 'images/263142.png' %}"  type="image/x-icon" >
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/prettyPhoto.css' %}" rel="stylesheet">
+    <link href="{% static 'css/price-range.css' %}" rel="stylesheet">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+	<link href="{% static 'css/main.css' %}" rel="stylesheet">
+	<link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+	<header id="header"><!--header-->
+		<div class="header_top"><!--header_top-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contactinfo">
+							<ul class="nav nav-pills">
+								<li><a href="{{ basicinfo.emaillink  }}"><i class="fa fa-envelope"></i>{{ basicinfo.emailname }}</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="social-icons pull-right">
+							<ul class="nav navbar-nav">
+                                {% if basicinfo.facebook %}
+								<li><a href="{{ basicinfo.facebook }}"><i class="fa fa-facebook"></i></a></li>
+                                {% endif %}
+                                {% if basicinfo.telegram %}
+								<li><a href="{{ basicinfo.telegram }}"><i class="fa fa-telegram"></i></a></li>
+                                {% endif %}
+                                {% if basicinfo.instagram %}
+								<li><a href="{{ basicinfo.instagram }}"><i class="fa fa-instagram"></i></a></li>
+                                {% endif %}
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header_top-->
+		
+		<div class="header-middle"><!--header-middle-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="logo pull-left">
+							<a href="{% url 'users' basicinfo.id %}"><img src="{{ basicinfo.main_icon.url }}" alt="" width="250" height="60"  /></a>
+						</div>
+					</div>
+					<div class="col-sm-8" style="background-color: rgb(200, 201, 201);">
+						<!-- <div class="shop-menu pull-right"> -->
+							<ul class="nav navbar-nav">
+								<li><a href="{% url 'home' %}"><i class="fa fa-user"></i> Գլխավոր էջ</a></li>
+                                {% if user.is_authenticated %}
+								<li><a href="{% url 'savepage' %}"><i class="fa fa-shopping-cart"></i>Իմ զամբյուղը</a></li>
+                                <li><a href="{% url 'about-us' %}"><i class="fa fa-info"></i>Մեր մասին</a></li>
+                                <li><a href="{% url 'contact-us' %}"><i class="fa fa-book"></i>Կապ մեզ հետ</a></li>
+								<li><a href="{% url 'logout' %}"><i></i>{{ user }} Դուրս գալ</a></li>
+                                {% if user.is_staff %}
+                                <li><a href="{% url 'add_products' %}">Ավելացնել</a></li>
+                                {% endif %}
+                                {% else %}
+                                <li><a href="{% url 'about-us' %}"><i class="fa fa-info"></i>Մեր մասին</a></li>
+								<li><a href="{% url 'login' %}"><i class="fa fa-info"></i>Կապ մեզ հետ</a></li>
+								<li><a href="{% url 'login' %}"><i class="fa fa-shopping-cart"></i>Իմ զամբյուղը</a></li>
+								<li><a href="{% url 'register' %}"><i class="fa fa-lock"></i> Գրանցվել</a></li>
+								<li><a href="{% url 'login' %}"><i class="fa fa-lock"></i> Մուտք գործել</a></li>
+                                {% endif %}
+
+							</ul>
+						<!-- </div> -->
+					</div>
+				</div>
+			</div>
+		</div><!--/header-middle-->
+	
+		<div class="header-bottom"><!--header-bottom-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-9">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="mainmenu pull-left">
+							<ul class="nav navbar-nav collapse navbar-collapse">
+								<li class="dropdown"><a href="#">Վաճառակետեր<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        {% for i in xanut %}
+                                            {% if i.user.is_staff %}
+                                                <li><a href="{% url 'users' i.id %}">{{ i.user }} </a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </li> 
+							</ul>
+                            
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!--/header-bottom-->
+	</header><!--/header-->
+{% block content %}
+
+
+
+{% endblock %}
+<footer id="footer"><!--Footer-->
+    <div class="footer-top">
+        <div class="container">
+        </div>
+    </div>
+    
+    <div class="footer-widget">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>ՔԱՂԱՔԱԿԱՆՈՒԹՅՈՒՆ
+                        </h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="{% url 'about-us' %}">Գաղտնիության քաղաքականություն</a></li>
+                            <li><a href="{% url 'about-us' %}">Փոխհատուցման քաղաքականություն</a></li>
+                            <li><a href="{% url 'about-us' %}">Վճարման համակարգ</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>Arm-Zona մասին</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="{% url 'about-us' %}">Ընկերության տվյալներ</a></li>
+                            <li><a href="{% url 'about-us' %}">Գտնվելու վայրը</a></li>
+                            <li><a href="{% url 'about-us' %}">Ինչպես միանալ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <p class="pull-left">Copyright © 2013 E-SHOPPER Inc. All rights reserved.</p>
+                <p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Themeum</a></span></p>
+            </div>
+        </div>
+    </div>
+    
+</footer><!--/Footer-->
+
+
+
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'js/price-range.js' %}"></script>
+<script src="{% static 'js/jquery.prettyPhoto.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</body>
+</html>

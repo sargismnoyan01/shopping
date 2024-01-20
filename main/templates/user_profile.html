@@ -1,0 +1,54 @@
+{% extends 'base2.html' %}
+    {% block content %}
+		{% load static %}
+	
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="left-sidebar">
+						<h2>Տեսականի</h2>
+						<div class="panel-group category-products" id="accordian">
+							{% for i in category %}
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="{% url 'product' i.id %}">{{ i.name }}</a></h4>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-9 padding-right">
+					<div class="features_items"><!--features_items-->
+						{% for i in subproduct %}
+						<h2 class="title text-center">{{ i.user }}</h2>
+						{% for j in i.only.all %}
+						<div class="col-sm-4">
+							<div class="product-image-wrapper">
+								<div class="single-products">
+									<div class="productinfo text-center">
+										<img src="{{ j.img.url }}" width="200" height="250" alt="" />
+										<h2>{{ j.price_now }}դրամ</h2>
+										<p>{{ j.name }}</p>
+										<a href="{% url 'detail' j.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Տեսնել</a>
+									</div>
+									{% if j.price_now != j.price_old %}
+									<img src="{% static 'images/6188700.png' %}"  class="pricing" alt="" width="90"  height="70" />
+									{% endif %}
+								</div>
+								<div class="choose">
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					{% endfor %}
+					
+					</div><!--features_items-->
+					
+					{% include 'panel.html' %}
+				</div>
+			</div>
+		</div>
+	</section>
+    {% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+	{% block content %}
+	<section id="form">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-1">
+					<div class="login-form">
+						{% for i in messages %}
+							<h4 style="color: brown;">{{ i }}</h4>
+						{% endfor %}
+						<h2>Մուտք գործել</h2>
+						<form action="{% url 'login' %}?next={{ request.get_full_path|urlencode }}" method="post">
+							{% csrf_token %}
+							<input type="hidden" name="next" value="{{ request.GET.next }}">
+							{% if request.GET.next %}
+								<input type="hidden" name="next" value="{{ request.GET.next }}">
+							{% endif %}
+							<input name="username" type="text" placeholder="Գրանցման անուն" />
+							<input name="password" type="password" placeholder="Գաղտնաբառ" />
+							<p><a href="{% url 'password_reset' %}"> Մոռացել եմ գաղտնաբառը</a></p>
+							<p><a href="{% url 'register' %}">Գրանցվել հիմա</a></p>
+							<button type="submit" class="btn btn-default">Մուտք գործել</button>
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% endblock %}

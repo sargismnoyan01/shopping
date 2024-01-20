@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+    {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+{% if user.is_staff %}
+    <h2>Լրացրեք տեղեկությունները</h2>
+    <br>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.cate.label_tag }}
+            {{ form.cate }}
+            <style>
+              #id_cate {
+                width: 13.5em; /* Adjust the width as needed */
+              }
+            </style>
+          </div>
+        <label for="name">Անվանում</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="price_old">Գին</label>
+        <input type="number" id="price_old" name="price_old" min="0" required>
+
+        <label for="price_now">Գինը հիմա</label>
+        <input type="number" id="price_now" name="price_now" min="0" required>
+
+        <label for="info">Կարճ տեղեկություն</label>
+        <div class="form-group">
+            {{ form.info }}
+            <style>
+              #id_info {
+                width: 14em;
+              }
+            </style>
+          </div>
+        <label for="img">Գլխավոր լուսանկար</label>
+        {{ form.img }}
+        <label for="img">լուսանկարներ</label>
+
+        {{ form.img1 }}
+        {{ form.img2 }}
+
+        <label for="email">email</label>
+        <input type="email" id="email" name="email"  required>
+
+        <button type="submit">Տեղադրել</button>
+    </form>
+
+</body>
+{% endif %}
+</html>
+    {% endblock %}
