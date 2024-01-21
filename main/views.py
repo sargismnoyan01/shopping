@@ -239,7 +239,7 @@ class ProductDetailView(DetailView):
             obj.save()
             email=EmailMessage(
                 subject=f'Նոր նամակ ARM-ZONA-ից',
-                body=f'Գնորդ-{request.POST.get('name')} \n Ապրանք-{subcategory.name} \n ID - {subcategory.id} \n Հեռախոսահամար - {request.POST.get('phone')} \n օգտատեր-{request.user}',
+                body=f"Գնորդ-{request.POST.get('name')} \n Ապրանք-{subcategory.name} \n ID - {subcategory.id} \n Հեռախոսահամար - {request.POST.get('phone')} \n օգտատեր-{request.user}",
                 from_email=EMAIL_HOST_USER,
                 to=[subcategory.email],
             )
@@ -404,7 +404,7 @@ class ContactUs(DetailView):
         xanut=UserInfos.objects.all()
         form=ContactUsForm(request.POST)
         if form.is_valid():
-            subject=f'Բարև {request.POST.get('name')}'
+            subject=f"Բարև {request.POST.get('name')}"
             body='ձեր կարծիքը կարևոր է մեզ համար \n Մենք շուտով կպատասխանենք ձեր հարցմանը։'
             email=EmailMessage(
                 subject=subject,
