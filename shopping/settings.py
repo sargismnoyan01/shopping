@@ -56,24 +56,24 @@ TEMPLATES = [
 WSGI_APPLICATION = 'shopping.wsgi.application'
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'armzona',
-        'USER':'postgres',
-        'PASSWORD':'727447Sa.',
-        'HOST':'192.168.0.104',
-        'PORT':'5432',
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'armzona',
+#         'USER':'postgres',
+#         'PASSWORD':'727447Sa.',
+#         'HOST':'192.168.0.104',
+#         'PORT':'5432',
+
+#     }
+# }
 
 
 AUTH_PASSWORD_VALIDATORS = [
