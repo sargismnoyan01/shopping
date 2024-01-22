@@ -9,6 +9,7 @@
 							<h4 style="color: brown;">{{ i }}</h4>
 						{% endfor %}
 						<h2>Մուտք գործել</h2>
+						mnb,mnb,m
 						<form action="{% url 'login' %}?next={{ request.get_full_path|urlencode }}" method="post">
 							{% csrf_token %}
 							<input type="hidden" name="next" value="{{ request.GET.next }}">
