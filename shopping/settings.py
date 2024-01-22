@@ -14,6 +14,7 @@ ALLOWED_HOSTS = ['*','16.171.146.195']
 
 
 INSTALLED_APPS = [
+    'jazzmin',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
