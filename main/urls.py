@@ -2,7 +2,7 @@ from django.urls import path
 from .views import *
 from django.contrib.auth import views as auth_views
 
-
+handler404 = 'main.views.custom_404_view'
 urlpatterns=[
     path('',HomeListView.as_view(),name='home'),
     path('filter/<int:id>/',ProductListView.as_view(),name='product'),
