@@ -153,6 +153,9 @@ class ProductListView(ListView):
         subcategory=Category.objects.filter(pk=id)
         categoryp=Category.objects.filter(id__in=[1,2,3,4,5,6,7,8])
         caregoryf=Category.objects.first()
+        govazd=Govazd.objects.first()
+        
+        
         context={
             'category':category,
             'subcategory':subcategory,
@@ -160,6 +163,7 @@ class ProductListView(ListView):
             'xanut':xanut,
             'categoryp':categoryp,
             'caregoryf':caregoryf,
+            'govazd':govazd,
                 }
 
         return render(request,self.template_name,context)
