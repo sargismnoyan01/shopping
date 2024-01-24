@@ -108,6 +108,11 @@
 				<div class="col-sm-9 padding-right">
 					<div class="features_items"><!--features_items-->
 						<h2 class="title text-center">Ամբողջ տեսականին</h2>
+						{% if k == 0 %}
+						<br><br><br>
+						<h3>Չի հայտնաբերվել</h3>
+						<br><br><br><br>
+						{% endif %}
 						{% for i in allproduct %}
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
