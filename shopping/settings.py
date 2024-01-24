@@ -7,9 +7,9 @@ TEMPLATES_DIR=os.path.join(BASE_DIR,'templates')
 
 SECRET_KEY = 'django-insecure-9b0c&930s17jh+@5fdg9-$%=&zwv0qz%-0pkn!#qtt_2fhkn_x'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*','13.53.146.252']
 
 
 
@@ -69,7 +69,7 @@ DATABASES = {
 #         'NAME': 'armzona',
 #         'USER':'postgres',
 #         'PASSWORD':'727447Sa.',
-#         'HOST':'localhost',
+#         'HOST':'192.168.0.104',
 #         'PORT':'5432',
 
 #     }
@@ -116,7 +116,7 @@ MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'main', 'static')),
 
-
+MEDIA_URL = '/media/'
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static_files")

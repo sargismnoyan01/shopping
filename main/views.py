@@ -33,7 +33,7 @@ class HomeListView(ListView):
         caregoryf=Category.objects.first()
         allproduct=AllProductModel.objects.all().order_by('-id')
         govazd=Govazd.objects.first()
-
+        k=allproduct.count()
 
         # ABS
         basicinfo=BaseInfo.objects.get()
@@ -53,6 +53,7 @@ class HomeListView(ListView):
             'carouselpanel_active':carouselpanel_active,
             'allproducts':allproducts,
             'govazd':govazd,
+            'k':k,
 
 
 
@@ -72,11 +73,12 @@ def HomeSearch(request):
     category=Category.objects.filter()
     xanut=UserInfos.objects.all()
     govazd=Govazd.objects.first()
+    
 
 
     allproduct=AllProductModel.objects.filter(id__icontains=request.GET.get('id'),
                                             name__icontains=request.GET.get('name'),)
-    
+    k=allproduct.count()
     return render(request,'index.html',{'basicinfo':basicinfo,
                                          'category':category,
                                          'xanut':xanut,
@@ -88,6 +90,7 @@ def HomeSearch(request):
                                          'caregoryf':caregoryf,
                                          'carousel':carousel,
                                          'govazd':govazd,
+                                        'k':k,
 
                                          })
     
