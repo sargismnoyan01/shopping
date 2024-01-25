@@ -33,7 +33,7 @@ class HomeListView(ListView):
         caregoryf=Category.objects.first()
         allproduct=AllProductModel.objects.all().order_by('-id')
         govazd=Govazd.objects.first()
-        k=allproduct.count()
+
 
         # ABS
         basicinfo=BaseInfo.objects.get()
@@ -90,7 +90,6 @@ def HomeSearch(request):
                                          'caregoryf':caregoryf,
                                          'carousel':carousel,
                                          'govazd':govazd,
-                                        'k':k,
 
                                          })
     
@@ -156,6 +155,9 @@ class ProductListView(ListView):
         subcategory=Category.objects.filter(pk=id)
         categoryp=Category.objects.filter(id__in=[1,2,3,4,5,6,7,8])
         caregoryf=Category.objects.first()
+        govazd=Govazd.objects.first()
+        
+        
         context={
             'category':category,
             'subcategory':subcategory,
@@ -163,6 +165,7 @@ class ProductListView(ListView):
             'xanut':xanut,
             'categoryp':categoryp,
             'caregoryf':caregoryf,
+            'govazd':govazd,
                 }
 
         return render(request,self.template_name,context)
@@ -242,7 +245,7 @@ class ProductDetailView(DetailView):
             obj.save()
             email=EmailMessage(
                 subject=f'Նոր նամակ ARM-ZONA-ից',
-                body=f'Գնորդ-{request.POST.get('name')} \n Ապրանք-{subcategory.name} \n ID - {subcategory.id} \n Հեռախոսահամար - {request.POST.get('phone')} \n օգտատեր-{request.user}',
+                body=f"Գնորդ-{request.POST.get('name')} \n Ապրանք-{subcategory.name} \n ID - {subcategory.id} \n Հեռախոսահամար - {request.POST.get('phone')} \n օգտատեր-{request.user}",
                 from_email=EMAIL_HOST_USER,
                 to=[subcategory.email],
             )
@@ -407,7 +410,7 @@ class ContactUs(DetailView):
         xanut=UserInfos.objects.all()
         form=ContactUsForm(request.POST)
         if form.is_valid():
-            subject=f'Բարև {request.POST.get('name')}'
+            subject=f"Բարև {request.POST.get('name')}"
             body='ձեր կարծիքը կարևոր է մեզ համար \n Մենք շուտով կպատասխանենք ձեր հարցմանը։'
             email=EmailMessage(
                 subject=subject,
@@ -450,5 +453,7 @@ class AboutUs(DetailView):
                 }
         
         return render(request,self.template_name,context)
-    
+
+def custom_404_view(request,exception):
+    return render(request, '404.html', status=404)
     
