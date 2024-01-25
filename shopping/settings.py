@@ -14,9 +14,9 @@ ALLOWED_HOSTS = ['*','16.171.146.195']
 
 
 INSTALLED_APPS = [
-    'jazzmin',
     'rest_framework',
     'django.contrib.admin',
+    'jazzmin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -115,7 +115,7 @@ MEDIA_ROOT = '/media/'
 
 MEDIA_ROOT= os.path.join(BASE_DIR,'media')
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'main', 'static')),
+    os.path.join(BASE_DIR, 'main', 'static_files')),
 
 
 
@@ -128,3 +128,12 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+AWS_ACCESS_KEY_ID = 'AKIAW3MECAM3XCKWNT67'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'shopping0001'
+AWS_S3_REGION_NAME = 'Europe (Stockholm) eu-north-1' 
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+
+# Media files
+AWS_PUBLIC_MEDIA_LOCATION = 'media/public'  # Customize as needed
+DEFAULT_FILE_STORAGE = 'shopping.storage_backends.PublicMediaStorage'
