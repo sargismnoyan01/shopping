@@ -128,12 +128,11 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AWS_ACCESS_KEY_ID = 'AKIAW3MECAM3XCKWNT67'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIAW3MECAM3WIIIHTGC'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'shopping0001'
-AWS_S3_REGION_NAME = 'Europe (Stockholm) eu-north-1' 
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-
-# Media files
-AWS_PUBLIC_MEDIA_LOCATION = 'media/public'  # Customize as needed
-DEFAULT_FILE_STORAGE = 'shopping.storage_backends.PublicMediaStorage'
+AWS_S3_REGION_NAME = 'eu-north-1'
+AWS_DEFAULT_ACL = None
+AWS_S3_VERITY = True
+AWS_S3_FILE_OVERWRITE = False
+DEFAULT_FILE_STORAGE = 'shopping.backends.s3bot3.S3Boto3Storage'
