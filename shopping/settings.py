@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-9b0c&930s17jh+@5fdg9-$%=&zwv0qz%-0pkn!#qtt_2fhkn_x
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*','16.171.146.195']
+ALLOWED_HOSTS = ['*','51.20.37.156']
 
 
 
@@ -111,28 +111,29 @@ EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 
 
 STATIC_URL = '/static/'
-MEDIA_ROOT = '/media/'
-
-MEDIA_ROOT= os.path.join(BASE_DIR,'media')
+STATIC_ROOT = os.path.join(BASE_DIR, "static_files")
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'main', 'static_files')),
+    os.path.join(BASE_DIR, 'main', 'static'),
+)
 
-
-
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-
-
-STATIC_URL = 'static/'
+# Media files (user-uploaded content)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AWS_ACCESS_KEY_ID = 'AKIAW3MECAM3WIIIHTGC'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'AKIAW3MECAM36VBOJTGD'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'shopping0001'
-AWS_S3_REGION_NAME = 'eu-north-1'
-AWS_DEFAULT_ACL = None
-AWS_S3_VERITY = True
-AWS_S3_FILE_OVERWRITE = False
-DEFAULT_FILE_STORAGE = 'shopping.backends.s3bot3.S3Boto3Storage'
+AWS_S3_REGION_NAME = 'eu-north-1'  # e.g., us-east-1
+
+# Static settings
+AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# Media settings
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
