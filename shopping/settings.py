@@ -7,7 +7,7 @@ TEMPLATES_DIR=os.path.join(BASE_DIR,'templates')
 
 SECRET_KEY = 'django-insecure-9b0c&930s17jh+@5fdg9-$%=&zwv0qz%-0pkn!#qtt_2fhkn_x'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*','51.20.37.156']
 
@@ -124,16 +124,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AWS_ACCESS_KEY_ID = 'AKIAW3MECAM36VBOJTGD'
-AWS_SECRET_ACCESS_KEY = 'MQkOjMZIEkI5mfhjiBnHGTeNSCzCoGNivdJmYHri'
-AWS_STORAGE_BUCKET_NAME = 'shopping0001'
-AWS_S3_REGION_NAME = 'eu-north-1'  # e.g., us-east-1
+# AWS_ACCESS_KEY_ID = 'AKIAW3MECAM36VBOJTGD'
+# AWS_SECRET_ACCESS_KEY = 'MQkOjMZIEkI5mfhjiBnHGTeNSCzCoGNivdJmYHri'
+# AWS_STORAGE_BUCKET_NAME = 'shopping0001'
+# AWS_S3_REGION_NAME = 'eu-north-1'  # e.g., us-east-1
 
-# Static settings
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
-STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# # Static settings
+# AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+# STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/static/'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# Media settings
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
+# # Media settings
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'

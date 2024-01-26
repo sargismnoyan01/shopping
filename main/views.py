@@ -38,7 +38,7 @@ class HomeListView(ListView):
         # ABS
         basicinfo=BaseInfo.objects.get()
         category=Category.objects.filter(id__in=[1,2,3,4,5,6,7,8,9,10])
-
+        k=allproduct.count()
 
         xanut=UserInfos.objects.all()
         context={
